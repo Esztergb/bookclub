@@ -49,12 +49,20 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <!-- <a class="button is-primary">
             <strong>Sign up</strong>
           </a>
           <a class="button is-light">
             Log in
-          </a>
+          </a> -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+
+          
         </div>
       </div>
     </div>
@@ -89,5 +97,18 @@
       </div>
     </div>
   </div>
+
+  <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      this is a footer if we need it
+    </footer>
+    
+ <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
 </html>
