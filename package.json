@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Esztergb/bookclub#readme",
   "dependencies": {
+    "bulma": "^0.9.4",
+    "bulma-start": "^0.0.5",
     "express": "^4.18.2",
     "path": "^0.12.7"
   }
