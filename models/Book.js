@@ -12,20 +12,21 @@ Books.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.VARCHAR(50),
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    author: {
-      type: DataTypes.VARCHAR(50),
-      allowNull: true,
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+    // author: {
+    //   type: DataTypes.VARCHAR(50),
+    //   allowNull: true,
+    // },
+    // description: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    // },
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "book",
