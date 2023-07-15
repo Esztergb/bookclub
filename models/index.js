@@ -1,5 +1,5 @@
 const User = require('./User');
-const Book = require('./Book');
+const Book = require('./Books');
 const Review = require('./Review')
 
 // A user can make many reviews
@@ -28,7 +28,7 @@ User.hasMany(Book, {
   onDelete: 'CASCADE'
 });
 
-//
+//book belongs to user
 
 Book.belongsTo(User, {
   foreignKey: 'user_id'
