@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jass.css">
+</head>
+
+<body>
+    <div class="flex-column justify-space-around">
+        <header class="display-flex justify-space-between align-center p-2">
+            <h1>
+
+                <a href="/">Book Club</a>
+            </h1>
+            <nav>
+                <!-- Conditionally render login or logout links -->
+                {{#if logged_in}}
+                <a href="/profile">profile</a> |
+                <button class="no-button" id="logout">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </nav>
+        </header>
+    </div>
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="hero-text">
+                Search, Read, Review!
+            </h1>
+        </div>
+    </section>
+
+    <!-- Render book cards here from bookcard.handlebars -->
+    <main class="gallery">
+        {{{ body }}}
+    </main>
+    <footer></footer>
+</body>
+
+</html>
