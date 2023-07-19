@@ -3,9 +3,11 @@ const bookApiKey = 'AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0';
 const btnSearchBook = document.querySelector('#search-book');
 const main = document.querySelector('#main');
 const IMGPATH = "http://books.google.com/books/content?";
+const input = document.querySelector('#input');
 
 // fetch books by title
 const fetchBooksByTitle = function (e) {
+    main.innerHTML = '';
     e.preventDefault();
     const bookTitle = document.querySelector('#input');
     const userInput = bookTitle.value;
@@ -18,11 +20,10 @@ const fetchBooksByTitle = function (e) {
 
             createBookEl(result.items);
         })
-
+    input.value = '';
 };
 
 const createBookEl = function (books) {
-    main.innerHTML = '';
 
     books.forEach(book => {
         let title = book.volumeInfo.title;
@@ -56,14 +57,13 @@ const fetchByGenre = function (genre) {
 
             createBookEl(result.items);
         })
-
-
 };
 
 
-fetchByGenre('fiction');
+//fetchByGenre('fiction');
 fetchByGenre('thriller');
-//fetchByGenre('history');
+fetchByGenre('history');
+fetchByGenre('romance');
 
 
 
