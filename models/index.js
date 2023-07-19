@@ -1,5 +1,6 @@
 const User = require('./User');
 const Book = require('./Books');
+const UserFavorites = require('./UserFavorites');
 // const Review = require('./Review')
 
 // A user can make many reviews
@@ -22,19 +23,18 @@ const Book = require('./Books');
 // });
 
 
-//user can have may books
-User.hasMany(Book, {
+// Many-to-Many relationship for favorites
+User.belongsToMany(Book, {
+  through: UserFavorites,
+  as: 'favoritedBooks',
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
 });
 
-//book belongs to user
-
-Book.belongsTo(User, {
-  foreignKey: 'user_id'
+Book.belongsToMany(User, {
+  through: UserFavorites,
+  as: 'favoritedByUsers',
+  foreignKey: 'book_id',
 });
 
-
-
-module.exports = { User, Book, };
+module.exports = { User, Book, UserFavorites };
 // module.exports = Review;
