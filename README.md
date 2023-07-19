@@ -4,23 +4,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Badge](https://img.shields.io/badge/Node.js-393?logo=nodedotjs&logoColor=fff&style=flat)](https://nodejs.org/en)
 [![Express Badge](https://img.shields.io/badge/Express-000?logo=express&logoColor=fff&style=flat)](https://expressjs.com/)
-[![Insomnia Badge](https://img.shields.io/badge/Insomnia-4000BF?logo=insomnia&logoColor=fff&style=flat)](https://insomnia.rest/)
 [![MySQL Badge](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=flat)](https://www.npmjs.com/package/mysql2)
 [![Sequelize Badge](https://img.shields.io/badge/Sequelize-52B0E7?logo=sequelize&logoColor=fff&style=flat)](https://sequelize.org/docs/v6/)
 [![.ENV Badge](https://img.shields.io/badge/.ENV-ECD53F?logo=dotenv&logoColor=000&style=flat)](https://www.npmjs.com/package/dotenv)
-[![Insomnia Badge](https://img.shields.io/badge/Insomnia-4000BF?logo=insomnia&logoColor=fff&style=flat)](https://insomnia.rest/)
+
   
 ## User Story
 
-```md
-AS A booklover 
-I WANT to be able to search books and add them to my favorites 
-SO THAT I can read them later
-```
+
+AS A booklover, I WANT to be able to search books and add them to my favorites, SO THAT I can read them later
+
 
 ## Description 
 
-Book search engine. Allows user to look at books by genre, create a login and select books to be added to my favourite books. 
+Book search engine. Allows user to look at books by genre, create a login and select books to be added to "my favourite books". 
 
 ## Table of Contents
 * [Installation](#installation)
@@ -57,8 +54,8 @@ Please follow Contributor Covenant Guidelines by clicking on the following link:
 No tests, just start the server and run the app 
 
 ## Questions
-Please visit [GitHub Page](https://github.com/Esztergb/bookclub) to view this project.
-[Heroku Page](https://morning-headland-11001-5962299a3945.herokuapp.com/)
+Please visit [GitHub Repo](https://github.com/Esztergb/bookclub) to view this project.
+[Heroku Deployed Page](https://morning-headland-11001-5962299a3945.herokuapp.com/)
 
 ##  Credits
 Thank you for tips and sugestions from Bootcamp instructors and classmates. I have used https://www.w3schools.com/ and https://www.stackoverflow.com to research information. Codes were based on mini project and some other modules from bootcamp. 
