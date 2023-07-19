@@ -12,10 +12,11 @@ const fetchBooksByTitle = function (e) {
     const bookapiURL = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${bookApiKey}`;
 
     fetch(bookapiURL)
-        .then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            console.log(data);
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.items)
+
+            createBookEl(result.items);
         })
 };
 
