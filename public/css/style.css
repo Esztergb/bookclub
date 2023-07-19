@@ -22,6 +22,9 @@
 
 .bookEl {
   margin: 10px;
+  width: 125px;
+  height: 175px;
+  display: inline-block;
 }
 
 .bookEl img {
