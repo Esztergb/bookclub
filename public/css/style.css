@@ -1,3 +1,14 @@
-.column {
-  display: flex;
-}
+.hero {
+    background-color: burlywood;
+    background-image: url("/images/tom-hermans-9BoqXzEeQqM-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center;  */
+    justify-content: center;
+    /* text-align: center; */
+    height: 150px;
+    box-sizing: border-box;
+    color: white;
+  };
