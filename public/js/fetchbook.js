@@ -22,7 +22,7 @@ const fetchBooksByTitle = function (e) {
 };
 
 const createBookEl = function (books) {
-    main.innerHTML = '';
+
 
     books.forEach(book => {
         let title = book.volumeInfo.title;
@@ -56,14 +56,13 @@ const fetchByGenre = function (genre) {
 
             createBookEl(result.items);
         })
-
-
 };
 
 
-fetchByGenre('fiction');
+//fetchByGenre('fiction');
 fetchByGenre('thriller');
-//fetchByGenre('history');
+fetchByGenre('history');
+fetchByGenre('romance');
 
 
 
