@@ -32,7 +32,6 @@ const sess = {
 
 app.use(session(sess));
 
-
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -40,11 +39,11 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(require("./controllers/html-routes"));
+
 app.use(routes);
 
 // connect to database before Starts the server to begin listening
 
 sequelize.sync({ force: false }).then(() => {
-
 app.listen(PORT, () => console.log("Server listening on: http://localhost:" + PORT));
+});
