@@ -1,14 +1,37 @@
 .hero {
-    background-color: burlywood;
-    background-image: url("/images/tom-hermans-9BoqXzEeQqM-unsplash.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    /* justify-content: space-between; */
-    /* align-items: center;  */
-    justify-content: center;
-    /* text-align: center; */
-    height: 150px;
-    box-sizing: border-box;
-    color: white;
-  };
+  background-color: burlywood;
+  background-image: url("/images/tom-hermans-9BoqXzEeQqM-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  /* justify-content: space-between; */
+  /* align-items: center;  */
+  justify-content: center;
+  /* text-align: center; */
+  height: 150px;
+  box-sizing: border-box;
+  color: white;
+}
+
+;
+
+
+main {
+  display: flex;
+}
+
+.bookEl {
+  margin: 10px;
+}
+
+.bookEl img {
+  width: 125px;
+  height: 175px;
+  border-radius: 5px;
+}
+
+.bookEl h3 {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
