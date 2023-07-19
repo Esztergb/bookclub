@@ -1,3 +1,23 @@
 .column {
   display: flex;
 }
+
+main {
+  display: flex;
+}
+
+.bookEl {
+  margin: 10px;
+}
+
+.bookEl img {
+  width: 125px;
+  height: 175px;
+  border-radius: 5px;
+}
+
+.bookEl h3 {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
