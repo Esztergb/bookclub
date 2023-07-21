@@ -1,5 +1,4 @@
 const btnSearch = document.querySelector('#search-book');
-const bookApiKey = 'AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0';
 const btnSearchBook = document.querySelector('#search-book');
 const main = document.querySelector('#main');
 const IMGPATH = "http://books.google.com/books/content?";
@@ -11,9 +10,8 @@ const fetchBooksByTitle = function (e) {
     e.preventDefault();
     const bookTitle = document.querySelector('#input');
     const userInput = bookTitle.value;
-    const bookapiURL = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${bookApiKey}`;
 
-    fetch(bookapiURL)
+    fetch(`/api/books/searchBooks/${userInput}`)
         .then(response => response.json())
         .then(result => {
             console.log(result.items)
@@ -48,9 +46,9 @@ const createBookEl = function (books) {
 
 // fetch books by genre
 const fetchByGenre = function (genre) {
-    const genreURL = `https://www.googleapis.com/books/v1/volumes?q=genre:${genre}`;
+    // const genreURL = `https://www.googleapis.com/books/v1/volumes?q=genre:${genre}`;
 
-    fetch(genreURL)
+    fetch(`/api/books/getGenre/${genre}`)
         .then(response => response.json())
         .then(result => {
             console.log(result.items)
