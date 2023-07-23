@@ -89,6 +89,8 @@ async function handleFavoriteClick(event) {
 }
 
 async function addToFavorites(bookId, btn) {
+  // TODO: Add book to book db and then add to favorites
+  // TODO: You either need to pass bookId to the book you to create as the id or pull the id from the created
   try {
     const response = await fetch('/api/books/favorites', {
       method: 'POST',

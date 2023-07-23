@@ -61,6 +61,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 router.post('/favorites', withAuth, async (req, res) => {
   try {
     console.log(req.body,req.session.user_id)
+
     const newFavorite = await UserFavorites.create({
       user_id: req.session.user_id,
       book_id: req.body.book_id,
@@ -72,26 +73,26 @@ router.post('/favorites', withAuth, async (req, res) => {
   }
 });
 
-// Delete a book from favorites by its ID
-router.delete('/favorites/:id', withAuth, async (req, res) => {
-  try {
-    const favoriteData = await UserFavorites.destroy({
-      where: {
-        user_id: req.session.user_id,
-        book_id: req.params.id,
-      },
-    });
+// // Delete a book from favorites by its ID
+// router.delete('/favorites/:id', withAuth, async (req, res) => {
+//   try {
+//     const favoriteData = await UserFavorites.destroy({
+//       where: {
+//         user_id: req.session.user_id,
+//         book_id: req.params.id,
+//       },
+//     });
 
-    if (!favoriteData) {
-      res.status(404).json({ message: 'No favorite book found with this id!' });
-      return;
-    }
+//     if (!favoriteData) {
+//       res.status(404).json({ message: 'No favorite book found with this id!' });
+//       return;
+//     }
 
-    res.status(200).json(favoriteData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.status(200).json(favoriteData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
 module.exports = router;
