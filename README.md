@@ -18,6 +18,7 @@ AS A booklover, I WANT to be able to search books and add them to my favorites, 
 ## Description 
 
 Book search engine. Allows user to look at books by genre, create a login and select books to be added to "my favourite books". 
+![Example screenshot](./public/images/Screenshot%202023-07-24%20at%2010.56.16%20AM.png)
 
 ## Table of Contents
 * [Installation](#installation)
