@@ -11,11 +11,15 @@ UserFavorites.init(
         model: 'user',
         key: 'id',
       },
-      // primaryKey: true,
+      primaryKey: true,
     },
     book_id: {
-      type: DataTypes.STRING,
-      // primaryKey: true,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'book',
+        key: 'id',
+      },
+      primaryKey: true,
     },
   },
   {
