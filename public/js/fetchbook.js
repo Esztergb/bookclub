@@ -1,10 +1,9 @@
+// const btnSearch = document.querySelector('#search-book');
 
-//const btnSearch = document.querySelector('#search-book');
-
-const btnSearchBook = document.querySelector('#search-book');
-const main = document.querySelector('#main');
-const input = document.querySelector('#input');
-const bookApiKey = 'AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0';
+const btnSearchBook = document.querySelector("#search-book");
+const main = document.querySelector("#main");
+const input = document.querySelector("#input");
+const bookApiKey = "AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0";
 
 // fetch books by title
 
@@ -21,34 +20,35 @@ const bookApiKey = 'AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0';
 //     });
 
 const fetchBooksByTitle = function (e) {
-    main.innerHTML = '';
-    e.preventDefault();
-    const bookTitle = document.querySelector('#input');
-    const userInput = bookTitle.value;
+  main.innerHTML = "";
+  e.preventDefault();
+  const bookTitle = document.querySelector("#input");
+  const userInput = bookTitle.value;
 
-    fetch(`/api/books/searchBooks/${userInput}`)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result.items)
+  fetch(`/api/books/searchBooks/${userInput}`)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result.items);
 
-            createBookEl(result.items);
-        })
-    input.value = '';
+      createBookEl(result.items);
+    });
+  input.value = "";
 };
-
 
 //   input.value = '';
 // };
 
-btnSearchBook.addEventListener('click', fetchBooksByTitle);
+btnSearchBook.addEventListener("click", fetchBooksByTitle);
 
-const createBookEl = function(books) {
-  books.forEach(book => {
+const createBookEl = function (books) {
+  books.forEach((book) => {
     let title = book.volumeInfo.title;
-    let imgThum = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : '';
+    let imgThum = book.volumeInfo.imageLinks
+      ? book.volumeInfo.imageLinks.smallThumbnail
+      : "";
 
-    let bookEl = document.createElement('div');
-    bookEl.classList.add('bookEl');
+    let bookEl = document.createElement("div");
+    bookEl.classList.add("bookEl");
 
     bookEl.innerHTML = `
       <a href="#">
@@ -57,45 +57,44 @@ const createBookEl = function(books) {
       <button class="btn btn-primary favorite-btn" data-book-id="${book.id}">Add to favorites</button>
     `;
 
-    bookEl.addEventListener('click', event => {
+    bookEl.addEventListener("click", (event) => {
       event.preventDefault();
       // Display details for this book
       displayBookDetails(book);
     });
 
-    main.appendChild(bookEl);
-  });
+//     main.appendChild(bookEl);
+//   });
 
-  // Add event listeners to the "Add to favorites" buttons
-  const favoriteButtons = document.querySelectorAll('.favorite-btn');
-  favoriteButtons.forEach(button => {
-    button.addEventListener('click', handleFavoriteClick);
-  });
+//   // Add event listeners to the "Add to favorites" buttons
+//   const favoriteButtons = document.querySelectorAll(".favorite-btn");
+//   favoriteButtons.forEach((button) => {
+//     button.addEventListener("click", handleFavoriteClick);
+//   });
 
-    console.log(books);
-}
+//   console.log(books);
+// };
 
 // fetch books by genre
 const fetchByGenre = function (genre) {
-    // const genreURL = `https://www.googleapis.com/books/v1/volumes?q=genre:${genre}`;
+  // const genreURL = `https://www.googleapis.com/books/v1/volumes?q=genre:${genre}`;
 
-    fetch(`/api/books/getGenre/${genre}`)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result.items)
+  fetch(`/api/books/getGenre/${genre}`)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result.items);
 
-            createBookEl(result.items);
-        })
-
+      createBookEl(result.items);
+    });
 };
 
 function displayBookDetails(book) {
-  const modal = document.getElementById('bookModal');
-  const modalContent = modal.querySelector('.modal-content');
+  const modal = document.getElementById("bookModal");
+  const modalContent = modal.querySelector(".modal-content");
 
   let title = book.volumeInfo.title;
-  let author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'Unknown';
-  let description = book.volumeInfo.description || 'No description available';
+  let author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : "Unknown";
+  let description = book.volumeInfo.description || "No description available";
 
   modalContent.innerHTML = `
     <h3>${title}</h3>
@@ -104,24 +103,24 @@ function displayBookDetails(book) {
     <button class="btn btn-primary favorite-btn" data-book-id="${book.id}">Add to my books!</button>
   `;
 
-  modal.classList.add('is-active');
+  modal.classList.add("is-active");
 }
 
-document.querySelector('.modal-close').addEventListener('click', () => {
-  document.getElementById('bookModal').classList.remove('is-active');
+document.querySelector(".modal-close").addEventListener("click", () => {
+  document.getElementById("bookModal").classList.remove("is-active");
 });
 
 // Event listeners
-btnSearchBook.addEventListener('click', fetchBooksByTitle);
+btnSearchBook.addEventListener("click", fetchBooksByTitle);
 
-document.addEventListener('click', event => {
-  if (event.target.matches('.favorite-btn')) {
+document.addEventListener("click", (event) => {
+  if (event.target.matches(".favorite-btn")) {
     handleFavoriteClick(event);
   }
 });
 
 async function handleFavoriteClick(event) {
-  const bookId = event.target.getAttribute('data-book-id');
+  const bookId = event.target.getAttribute("data-book-id");
   await addToFavorites(bookId, event.target); // passing the button as well for UI feedback
 }
 
@@ -129,24 +128,24 @@ async function addToFavorites(bookId, btn) {
   // TODO: Add book to book db and then add to favorites
   // TODO: You either need to pass bookId to the book you to create as the id or pull the id from the created
   try {
-    const response = await fetch('/api/books/favorites', {
-      method: 'POST',
+    const response = await fetch("/api/books/favorites", {
+      method: "POST",
       body: JSON.stringify({ book_id: bookId }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
     if (response.ok) {
-      console.log('Book successfully added to favorites!');
-      btn.textContent = 'Added to your books!';
+      console.log("Book successfully added to favorites!");
+      btn.textContent = "Added to your books!";
       btn.disabled = true;
     } else {
-      console.error('Error adding book to favorites.');
-      alert('Failed to add book to favorites. Try again.');
+      console.error("Error adding book to favorites.");
+      alert("Failed to add book to favorites. Try again.");
     }
   } catch (error) {
-    console.error('Error:', error);
-    alert('Something went wrong. Please try again.');
+    console.error("Error:", error);
+    alert("Something went wrong. Please try again.");
   }
 }

@@ -1,3 +1,4 @@
+-- Active: 1688057078476@@127.0.0.1@3306@bookclub_db
 DROP DATABASE IF EXISTS bookclub_db;
 CREATE DATABASE bookclub_db;
 USE bookclub_db;
@@ -27,3 +28,4 @@ USE bookclub_db;
 --     FOREIGN KEY (user_id) REFERENCES users(id),
 --     FOREIGN KEY (book_id) REFERENCES books(id)
 -- );
+select * from book;

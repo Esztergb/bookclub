@@ -13,7 +13,7 @@ Book.init(
     },
     google_books_id: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING,
