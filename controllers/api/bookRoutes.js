@@ -1,11 +1,15 @@
 const router = require('express').Router();
 const { Book, UserFavorites } = require('../../models');
 const withAuth = require('../../utils/auth');
+const axios = require('axios');
+require('dotenv').config();
+
 const { Op } = require('sequelize');
 // Fetch books by title
 router.get('/', async (req, res) => {
   try {
     const { title } = req.query;
+
 
     const books = await Book.findAll({
       where: {
@@ -57,6 +61,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+
 // Add a book to favorites
 router.post('/favorites', withAuth, async (req, res) => {
   try {
@@ -93,6 +98,19 @@ router.post('/favorites', withAuth, async (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
+
+
+router.get('/searchBooks/:userInput', async (req, res) => {
+
+  const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.userInput}&key=${process.env.API_KEY}`);
+  res.status(200).json(response.data);
+});
+
+router.get('/getGenre/:genre', async (req, res) => {
+  // const genre = 'thriller'
+  const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=genre:${req.params.genre}`);
+  res.status(200).json(response.data);
+});
 
 
 module.exports = router;

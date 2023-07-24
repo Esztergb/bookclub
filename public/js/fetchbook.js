@@ -1,23 +1,44 @@
+
+//const btnSearch = document.querySelector('#search-book');
+
 const btnSearchBook = document.querySelector('#search-book');
 const main = document.querySelector('#main');
 const input = document.querySelector('#input');
 const bookApiKey = 'AIzaSyDJ5jgrBs4MYEZUDJrKd6tz9W-2cnpD3y0';
 
 // fetch books by title
-const fetchBooksByTitle = function(e) {
-  main.innerHTML = '';
-  e.preventDefault();
-  const userInput = input.value;
-  const bookapiURL = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${bookApiKey}`;
 
-  fetch(bookapiURL)
-    .then(response => response.json())
-    .then(result => {
-      createBookEl(result.items);
-    });
+// const fetchBooksByTitle = function(e) {
+//   main.innerHTML = '';
+//   e.preventDefault();
+//   const userInput = input.value;
+//   const bookapiURL = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${bookApiKey}`;
 
-  input.value = '';
+//   fetch(bookapiURL)
+//     .then(response => response.json())
+//     .then(result => {
+//       createBookEl(result.items);
+//     });
+
+const fetchBooksByTitle = function (e) {
+    main.innerHTML = '';
+    e.preventDefault();
+    const bookTitle = document.querySelector('#input');
+    const userInput = bookTitle.value;
+
+    fetch(`/api/books/searchBooks/${userInput}`)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.items)
+
+            createBookEl(result.items);
+        })
+    input.value = '';
 };
+
+
+//   input.value = '';
+// };
 
 btnSearchBook.addEventListener('click', fetchBooksByTitle);
 
@@ -50,6 +71,22 @@ const createBookEl = function(books) {
   favoriteButtons.forEach(button => {
     button.addEventListener('click', handleFavoriteClick);
   });
+
+    console.log(books);
+}
+
+// fetch books by genre
+const fetchByGenre = function (genre) {
+    // const genreURL = `https://www.googleapis.com/books/v1/volumes?q=genre:${genre}`;
+
+    fetch(`/api/books/getGenre/${genre}`)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.items)
+
+            createBookEl(result.items);
+        })
+
 };
 
 function displayBookDetails(book) {
